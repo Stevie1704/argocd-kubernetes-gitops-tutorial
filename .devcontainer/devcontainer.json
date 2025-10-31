@@ -1,0 +1,36 @@
+{
+    "name": "Minikube Dev Environment",
+    // We start from a basic universal image.
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+        // 1. Install Docker-in-Docker (DinD)
+        // This is critical. It allows the dev container to run its own
+        // isolated Docker daemon, which minikube will use.
+        "ghcr.io/devcontainers/features/docker-in-docker:2": {
+            "version": "latest"
+        },
+        // 2. Install Kubernetes tools
+        // This feature bundle conveniently installs kubectl, helm, and minikube.
+        "ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {
+            "version": "latest",
+            "minikube": "latest"
+        }
+    },
+    // 3. Give the container privileged access
+    // This is MANDATORY for the Docker-in-Docker daemon to function correctly.
+    "privileged": true,
+    // Optional: Forward the Kubernetes API port in case you want to access it.
+    "forwardPorts": [
+        8443
+    ],
+    // Optional: Keep the container running even if you close VS Code.
+    "shutdownAction": "stopContainer",
+    // Optional: Add VS Code settings specifically for this container.
+    "settings": {
+        "terminal.integrated.shell.linux": "/bin/bash"
+    },
+    // Optional: Add VS Code extensions to install inside the container.
+    "extensions": [
+        "ms-kubernetes-tools.vscode-kubernetes-tools"
+    ]
+}
