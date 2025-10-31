@@ -51,6 +51,7 @@ To verify, you can get all grades with:
 curl http://localhost:<port>/grades
 ```
 
-## Become a Cloud and DevOps Engineer
+## Credits
 
-Learn every tool that matters: https://rayanslim.com
+This is a fork from [link](https://github.com/rslim087a/argocd-kubernetes-gitops-tutorial). 
+If you want to learn further DevOps topics, check out his page: https://rayanslim.com
